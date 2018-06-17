@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
 
-    int* pInt = new int[1000000];
+    int *pInt = new int[100];
 
     cout << sizeof(pInt);
     //simulazione caricamento ed esaurimento
@@ -21,7 +21,7 @@ int main() {
     cout << "-----------------------------------------------\n";
 
     //allocazione di un array più grande
-    int* temp = new int[200000];
+    int *temp = new int[200];
 
 
    /* //copio i dati del primo array nel nuovo
@@ -36,13 +36,17 @@ int main() {
     pInt = temp;
 */
 
-   expandArray(pInt,100,temp,101);
-   temp = nullptr;
-   temp = new int[400];
-   pInt[151] = 1000000;
+    expandArray(pInt, 100, temp, 200);
+    for (int i = 100; i < 200; i++) {
+        pInt[i] = i;
+    }
+    cout << "Test: " << pInt[199] << endl;
 
-   cout << "Test: " << pInt[151] << endl;
+    expandArray(pInt, 200, temp, 400);
+    pInt[351] = 351;
+    cout << "Test2: " << pInt[351];
 
     delete[] temp;
     temp = nullptr;
+    pInt = nullptr;
 }
